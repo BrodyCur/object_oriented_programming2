@@ -31,6 +31,7 @@ class BankAccount:
     def interest_time(cls):
         for account in cls.accounts:
             account.balance += account.balance * cls.interest_rate
+        return account.balance
 
 
 my_account = BankAccount.create()
