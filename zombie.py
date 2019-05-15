@@ -1,5 +1,6 @@
 import random
 
+
 class Zombie:
 
     max_speed = 5
@@ -49,7 +50,7 @@ class Zombie:
         how_many_die = random.randint(0, 10)
         counter = 0
         while counter < how_many_die and len(Zombie.horde) > 0:
-            random_zombie = random.randint(0,len(Zombie.horde) - 1)
+            random_zombie = random.randint(0, len(Zombie.horde) - 1)
             Zombie.horde.pop(random_zombie)
             counter += 1
 
@@ -60,11 +61,11 @@ class Zombie:
         Returns a summary of what happened."""
         outrun = self.chase()
 
-        if outrun == True:
+        if outrun is True:
             return 'You escaped!'
-        elif outrun == False:
+        elif outrun is False:
             battle = self.fight()
-            if battle == True:
+            if battle is True:
                 return "You win! But... Rrrraaaaargh! You're a zombie now oh no!!"
                 Zombie.horde.append(Zombie(your_speed))
         else:
@@ -87,19 +88,18 @@ class Zombie:
         return Zombie.plague_level
 
 
-
-print(Zombie.horde) # []
+print(Zombie.horde)  # []
 Zombie.new_day()
-print(Zombie.horde) # [<__main__.Zombie object at 0x7f6f594f0d30>, <__main__.Zombie object at 0x7f6f594f0b70>, <__main__.Zombie object at 0x7f6f594f0d68>]
+print(Zombie.horde)  # [<__main__.Zombie object at 0x7f6f594f0d30>, <__main__.Zombie object at 0x7f6f594f0b70>, <__main__.Zombie object at 0x7f6f594f0d68>]
 zombie1 = Zombie.horde[0]
-print(zombie1) # Speed: 1 -- Strength: 7
+print(zombie1)  # Speed: 1 -- Strength: 7
 zombie2 = Zombie.horde[1]
-print(zombie2) # Speed: 2 -- Strength: 7
-print(zombie1.encounter()) # You escaped!
-print(zombie2.encounter()) # You fought the zombie and caught the plague.  You are now a zombie too.  Raaaawrgh
+print(zombie2)  # Speed: 2 -- Strength: 7
+print(zombie1.encounter())  # You escaped!
+print(zombie2.encounter())  # You fought the zombie and caught the plague.  You are now a zombie too.  Raaaawrgh
 Zombie.new_day()
-print(Zombie.horde) # [<__main__.Zombie object at 0x7f6f594f0d30>, <__main__.Zombie object at 0x7f6f594efef0>, <__main__.Zombie object at 0x7f6f594f0c50>, <__main__.Zombie object at 0x7f6f594f0cc0>]
+print(Zombie.horde)  # [<__main__.Zombie object at 0x7f6f594f0d30>, <__main__.Zombie object at 0x7f6f594efef0>, <__main__.Zombie object at 0x7f6f594f0c50>, <__main__.Zombie object at 0x7f6f594f0cc0>]
 zombie1 = Zombie.horde[0]
 zombie2 = Zombie.horde[1]
-print(zombie1.encounter()) # You died!
-print(zombie2.encounter()) # You escaped!
+print(zombie1.encounter())  # You died!
+print(zombie2.encounter())  # You escaped!

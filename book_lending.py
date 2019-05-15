@@ -1,6 +1,7 @@
 from datetime import datetime
 import random
 
+
 class Book:
 
     on_shelf = []
@@ -25,9 +26,8 @@ class Book:
         if self.lent_out():
             Book.on_loan.remove(self)
             Book.on_shelf.append(self)
-            due_date = None
             return True
-        else: 
+        else:
             return False
 
     def lent_out(self):
@@ -45,13 +45,13 @@ class Book:
     @classmethod
     def current_due_date(cls):
         now = datetime.now()
-        two_weeks = 60 * 60 * 24 * 14 # two weeks expressed in seconds 
+        two_weeks = 60 * 60 * 24 * 14  # two weeks expressed in seconds
         future_timestamp = now.timestamp() + two_weeks
         return datetime.fromtimestamp(future_timestamp)
 
     @classmethod
     def overdue(cls):
-        for book in overdue_books:
+        for book in cls.overdue_books:
             if Book.current_due_date() < datetime.now():
                 Book.overdue_books.append(book)
             else:
@@ -71,8 +71,8 @@ if_they_come = Book.create("If They Come in the Morning", "Angela Y. Davis", "08
 print(Book.browse().title)
 print(Book.browse().title)
 
-print(len(Book.on_shelf)) 
-print(len(Book.on_loan)) 
+print(len(Book.on_shelf))
+print(len(Book.on_loan))
 
 print(sister_outsider.lent_out())
 
@@ -80,17 +80,17 @@ print(sister_outsider.borrow())
 
 print(sister_outsider.lent_out())
 
-print(len(Book.on_shelf)) # 2
-print(len(Book.on_loan)) # 1
+print(len(Book.on_shelf))  # 2
+print(len(Book.on_loan))  # 1
 
-print(sister_outsider.lent_out()) # True
+print(sister_outsider.lent_out())  # True
 
-print(sister_outsider.borrow()) # False
+print(sister_outsider.borrow())  # False
 
-print(sister_outsider.current_due_date()) # 2017-02-25 20:52:20 -0500 (this value will be different for you)
+print(sister_outsider.current_due_date())  # 2017-02-25 20:52:20 -0500 (this 'Value' will be different for you)
 
-print(sister_outsider.return_to_library()) # True
-print(sister_outsider.lent_out()) # False
+print(sister_outsider.return_to_library())  # True
+print(sister_outsider.lent_out())  # False
 
-print(len(Book.on_shelf)) # 3
-print(len(Book.on_loan)) # 0
+print(len(Book.on_shelf))  # 3
+print(len(Book.on_loan))  # 0
